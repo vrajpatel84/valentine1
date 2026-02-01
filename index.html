@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jiya 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  width: 340px;
+  z-index: 2;
+}
+
+h1 {
+  color: #ff2f68;
+}
+
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: #ff2f68;
+  color: white;
+}
+
+#no {
+  background: #eee;
+}
+
+#result {
+  display: none;
+}
+
+#result img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Jiya 💕</h1>
+  <p id="question">Will you be my Valentine?</p>
+
+  <button id="yes" onclick="yesClicked()">Yes 💖</button>
+  <button id="no" onclick="noClicked()">No 🙃</button>
+
+  <div id="result">
+    <h2>LET’S GOOO 😍💘</h2>
+    <p>You just made me the happiest ❤️</p>
+
+    <!-- ✅ GUARANTEED WORKING ONLINE IMAGE -->
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80">
+  </div>
+</div>
+
+<audio id="music" src="music.mp3"></audio>
+
+<script>
+function yesClicked() {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("yes").style.display = "none";
+  document.getElementById("no").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("music").play();
+  startConfetti();
+}
+
+function noClicked() {
+  alert("Nice try 😌 destiny only allows YES 💘");
+}
+
+function startConfetti() {
+  for (let i = 0; i < 100; i++) {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+    document.body.appendChild(confetti);
+  }
+}
+</script>
+
+</body>
+</html>
